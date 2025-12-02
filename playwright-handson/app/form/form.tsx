@@ -12,7 +12,7 @@ export function ShuffleMemberForm() {
   // 通信
   const callApi = useCallback(async () => {
     const members = [] as string[]
-    const refs = [firstRef, firstRef, firstRef] // ここにバグ
+    const refs = [firstRef, secondRef, thirdRef]
     for (const ref of refs) {
       if (ref.current?.value) {
         members.push(ref.current?.value)
@@ -36,7 +36,7 @@ export function ShuffleMemberForm() {
     <label htmlFor="third">3人目:</label>
     <input type="text" ref={thirdRef} id="third" name="third" placeholder="3人目の名前を入力" /><br />
     <button onClick={callApi}>シャッフル</button><br />
-    <output id="result" htmlFor="first second third fourth">{result.join('→')}</output>
+    <output id="result" role="status" aria-label="結果" htmlFor="first second third fourth">{result.join('→')}</output>
     </>
   )
 }
